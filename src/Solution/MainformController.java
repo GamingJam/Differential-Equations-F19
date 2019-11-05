@@ -65,7 +65,7 @@ public class MainformController {
             cnt = 1;
         } else {
             if(cnt == 1){
-                jpg_id.opacityProperty().setValue(0.02);
+                jpg_id.opacityProperty().setValue(0.025);
                 cnt = 2;
             } else {
                 if(cnt == 2){
