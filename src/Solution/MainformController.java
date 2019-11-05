@@ -8,6 +8,7 @@ import javafx.scene.chart.LineChart;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.TextField;
+import javafx.scene.image.ImageView;
 
 
 public class MainformController {
@@ -53,7 +54,28 @@ public class MainformController {
     private TextField lim_tf;
 
     @FXML
+    private ImageView jpg_id;
+    private int cnt;
+
+    @FXML
     void btn() {
+
+        if(cnt == 0){
+            jpg_id.opacityProperty().setValue(0.01);
+            cnt = 1;
+        } else {
+            if(cnt == 1){
+                jpg_id.opacityProperty().setValue(0.02);
+                cnt = 2;
+            } else {
+                if(cnt == 2){
+                    jpg_id.opacityProperty().setValue(0.0);
+                    cnt = 0;
+                }
+            }
+        }
+
+
         main_graph.getData().clear();
         error_graph.getData().clear();
 

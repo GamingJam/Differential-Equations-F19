@@ -4,6 +4,7 @@
 <?import java.util.*?>
 <?import javafx.scene.chart.*?>
 <?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.paint.*?>
 
@@ -30,7 +31,7 @@
     <CheckBox fx:id="eu_ch" layoutX="21.0" layoutY="311.0" mnemonicParsing="false" text="Euler" />
     <CheckBox fx:id="i_eu_ch" layoutX="21.0" layoutY="350.0" mnemonicParsing="false" text="Improved Euler" />
     <CheckBox fx:id="rk_ch" layoutX="21.0" layoutY="387.0" mnemonicParsing="false" text="Runge Kutta" />
-    <LineChart id="main_graph" fx:id="error_graph" cache="true" cacheHint="SPEED" createSymbols="false" disable="false" layoutX="305.0" layoutY="607.0" legendVisible="true" opacity="1.0" prefHeight="336.0" prefWidth="958.0" title="Errors" visible="true">
+    <LineChart fx:id="error_graph" cache="true" cacheHint="SPEED" createSymbols="false" disable="false" layoutX="305.0" layoutY="607.0" legendVisible="true" opacity="1.0" prefHeight="336.0" prefWidth="958.0" title="Errors" visible="true">
       <xAxis>
         <NumberAxis side="BOTTOM" />
       </xAxis>
@@ -41,5 +42,10 @@
     <CheckBox id="eu_ch" fx:id="eu_er_ch" layoutX="21.0" layoutY="480.0" mnemonicParsing="false" text="Euler Error" />
     <CheckBox id="i_eu_ch" fx:id="i_eu_er_ch" layoutX="21.0" layoutY="519.0" mnemonicParsing="false" text="Improved Euler Error" />
     <CheckBox id="rk_ch" fx:id="rk_er_ch" layoutX="21.0" layoutY="556.0" mnemonicParsing="false" text="Runge Kutta Error" />
+    <ImageView id="hqdefault.jpg" fx:id="jpg_id" fitHeight="496.0" fitWidth="890.0" layoutX="357.0" layoutY="52.0" opacity="0.0">
+      <image>
+        <Image url="@hqdefault.jpg" preserveRatio="true" smooth="true" />
+      </image>
+    </ImageView>
   </children>
 </AnchorPane>
