@@ -11,7 +11,7 @@
 <AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="960.0" prefWidth="1280.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="Solution.MainformController">
   <children>
     <Button fx:id="btn_id" layoutX="21.0" layoutY="834.0" mnemonicParsing="false" onAction="#btn" prefHeight="62.0" prefWidth="284.0" text="Plot" />
-    <LineChart fx:id="main_graph" cache="true" cacheHint="SPEED" createSymbols="false" disable="false" layoutX="308.0" layoutY="14.0" legendVisible="true" opacity="1.0" prefHeight="583.0" prefWidth="957.9998779296875" title="Graphics" visible="true">
+    <LineChart fx:id="main_graph" alternativeColumnFillVisible="false" alternativeRowFillVisible="false" cache="true" cacheHint="SPEED" createSymbols="false" disable="false" layoutX="308.0" layoutY="14.0" legendVisible="true" opacity="1.0" prefHeight="393.0" prefWidth="958.0" title="Graphics" visible="true">
       <xAxis>
         <NumberAxis side="BOTTOM" />
       </xAxis>
@@ -19,19 +19,19 @@
         <NumberAxis side="LEFT" />
       </yAxis>
     </LineChart>
-    <TextField fx:id="ex_step_tf" layoutX="102.0" layoutY="34.0" prefWidth="189.0" promptText="Step" text="0.01" />
-    <Label layoutX="21.0" layoutY="37.0" text="Exact step" />
+    <TextField fx:id="ex_step_tf" layoutX="66.0" layoutY="34.0" prefWidth="225.0" promptText="Step" text="50" />
+    <Label layoutX="21.0" layoutY="37.0" text="Steps" />
     <TextField id="x0tf" fx:id="y0_tf" layoutX="47.0" layoutY="149.0" prefWidth="244.0" promptText="0" text="0" />
     <Label layoutX="21.0" layoutY="152.0" text="y0" />
     <Label layoutX="21.0" layoutY="183.0" text="x0" />
     <TextField id="y0tf" fx:id="x0_tf" layoutX="47.0" layoutY="180.0" prefWidth="244.0" promptText="0" text="0" />
     <Label layoutX="21.0" layoutY="215.0" text="limit" />
     <TextField fx:id="lim_tf" layoutX="61.0" layoutY="212.0" prefWidth="230.0" promptText="15" text="5" />
-    <CheckBox fx:id="ex_ch" layoutX="21.0" layoutY="274.0" mnemonicParsing="false" text="Exact" />
-    <CheckBox fx:id="eu_ch" layoutX="21.0" layoutY="311.0" mnemonicParsing="false" text="Euler" />
-    <CheckBox fx:id="i_eu_ch" layoutX="21.0" layoutY="350.0" mnemonicParsing="false" text="Improved Euler" />
-    <CheckBox fx:id="rk_ch" layoutX="21.0" layoutY="387.0" mnemonicParsing="false" text="Runge Kutta" />
-    <LineChart fx:id="error_graph" cache="true" cacheHint="SPEED" createSymbols="false" disable="false" layoutX="305.0" layoutY="607.0" legendVisible="true" opacity="1.0" prefHeight="336.0" prefWidth="958.0" title="Errors" visible="true">
+    <CheckBox fx:id="ex_ch" layoutX="21.0" layoutY="347.0" mnemonicParsing="false" text="Exact" />
+    <CheckBox fx:id="eu_ch" layoutX="21.0" layoutY="384.0" mnemonicParsing="false" text="Euler" />
+    <CheckBox fx:id="i_eu_ch" layoutX="21.0" layoutY="423.0" mnemonicParsing="false" text="Improved Euler" />
+    <CheckBox fx:id="rk_ch" layoutX="21.0" layoutY="460.0" mnemonicParsing="false" text="Runge Kutta" />
+    <LineChart fx:id="error_graph" alternativeRowFillVisible="false" cache="true" cacheHint="SPEED" createSymbols="false" disable="false" horizontalZeroLineVisible="true" layoutX="308.0" layoutY="407.0" legendVisible="true" opacity="1.0" prefHeight="294.0" prefWidth="958.0" title="Errors" verticalGridLinesVisible="true" visible="true">
       <xAxis>
         <NumberAxis side="BOTTOM" />
       </xAxis>
@@ -39,10 +39,23 @@
         <NumberAxis side="LEFT" />
       </yAxis>
     </LineChart>
-    <ImageView id="hqdefault.jpg" fx:id="jpg_id" fitHeight="496.0" fitWidth="890.0" layoutX="357.0" layoutY="52.0" opacity="0.0">
+    <ImageView id="hqdefault.jpg" fx:id="jpg_id" fitHeight="301.0" fitWidth="895.0" layoutX="356.0" layoutY="60.0" opacity="0.0">
       <image>
         <Image url="@hqdefault.jpg" preserveRatio="true" smooth="true" />
       </image>
     </ImageView>
+    <LineChart fx:id="ta_error_graph" alternativeRowFillVisible="false" cache="true" cacheHint="SPEED" createSymbols="false" disable="false" layoutX="308.0" layoutY="701.0" legendVisible="true" opacity="1.0" prefHeight="245.0" prefWidth="958.0" title="Total approximation errors" visible="true">
+      <xAxis>
+        <NumberAxis side="BOTTOM" />
+      </xAxis>
+      <yAxis>
+        <NumberAxis side="LEFT" />
+      </yAxis>
+    </LineChart>
+    <Label layoutX="36.0" layoutY="72.0" prefWidth="255.0" text="20 - 5000 to avoid poor performance" />
+    <Label layoutX="21.0" layoutY="252.0" prefWidth="177.0" text="Total approximation limits:" />
+    <TextField id="lim_tf" fx:id="tas_tf" layoutX="17.0" layoutY="285.0" prefWidth="106.0" promptText="15" text="20" />
+    <TextField id="lim_tf" fx:id="taf_tf" layoutX="169.0" layoutY="285.0" prefWidth="106.0" promptText="15" text="500" />
+    <Label layoutX="138.0" layoutY="281.0" prefWidth="16.0" text=" _ " />
   </children>
 </AnchorPane>

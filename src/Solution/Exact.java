@@ -2,43 +2,43 @@ package Solution;
 
 import javafx.scene.chart.XYChart;
 
-import java.math.BigDecimal;
-import java.math.MathContext;
 
 public class Exact {
-    private float c, x0;
-    private float step, end;
+    private double c, x0;
+    private double step, lim;
     private XYChart.Series<Number, Number> seriesE;
 
-    Exact(float x0, float y0, float step, float end) {
+
+    Exact(double x0, double y0, int steps, double lim) {
         this.x0 = x0;
-        this.step = step;
-        this.end = end;
-        this.c = (float) (1 / (-1 * Math.exp(x0) + y0) + x0);
+        this.step = (lim - x0) / steps;
+        this.lim = lim;
+        this.c = ((1 / (-1 * Math.exp(x0) + y0)) + x0);
         seriesE = new XYChart.Series<>();
         seriesE.setName("Exact");
     }
 
     XYChart.Series<Number, Number> getSeries() {
         seriesE.getData().clear();
+        double x = x0;
 
-        float x = x0;
-
-
-        while (x < end) {
+        while (x < lim) {
             seriesE.getData().add(new XYChart.Data<Number, Number>(x, calculation(x)));
-
             x += step;
-
         }
 
-        System.out.println(x + "  " + calculation(x).toString());
         return seriesE;
     }
 
+    private double calculation(double x) {
+        return (Math.exp(x) + 1 / (c - x));
+    }
+
+
+    /*
     private BigDecimal calculation(float x) {
         BigDecimal b = new BigDecimal((Math.exp(x) + 1 / (c - x)), MathContext.DECIMAL64);
         return b;
     }
-
+    */
 }

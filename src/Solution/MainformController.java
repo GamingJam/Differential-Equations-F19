@@ -40,6 +40,9 @@ public class MainformController {
     @FXML
     private LineChart<Number, Number> error_graph;
 
+    @FXML
+    private LineChart<Number, Number> ta_error_graph;
+
 
     @FXML
     private TextField x0_tf;
@@ -54,57 +57,68 @@ public class MainformController {
     private TextField lim_tf;
 
     @FXML
+    private TextField taf_tf;
+
+    @FXML
+    private TextField tas_tf;
+
+    @FXML
     private ImageView jpg_id;
     private int cnt;
 
     @FXML
     void btn() {
 
-        if(cnt == 0){
+        if (cnt == 0) {
             jpg_id.opacityProperty().setValue(0.01);
             cnt = 1;
         } else {
-            if(cnt == 1){
+            if (cnt == 1) {
                 jpg_id.opacityProperty().setValue(0.025);
                 cnt = 2;
             } else {
-                if(cnt == 2){
+                if (cnt == 2) {
                     jpg_id.opacityProperty().setValue(0.0);
                     cnt = 0;
                 }
             }
         }
 
-
         main_graph.getData().clear();
         error_graph.getData().clear();
+        ta_error_graph.getData().clear();
 
-        float ex_step = Float.parseFloat(ex_step_tf.getCharacters().toString());
+        int steps = Integer.parseInt(ex_step_tf.getCharacters().toString());
         float y0 = Float.parseFloat(y0_tf.getCharacters().toString());
         float x0 = Float.parseFloat(x0_tf.getCharacters().toString());
         float limit = Float.parseFloat(lim_tf.getCharacters().toString());
-
-        if (ex_ch.isSelected()) {
-            Exact ex = new Exact(x0, y0, ex_step, limit);
-            main_graph.getData().add(ex.getSeries());
-        }
+        int tas = Integer.parseInt(tas_tf.getCharacters().toString());
+        int taf = Integer.parseInt(taf_tf.getCharacters().toString());
 
         if (eu_ch.isSelected()) {
-            Euler eu = new Euler(x0, y0, ex_step, limit);
+            Euler eu = new Euler(x0, y0, steps, limit, tas, taf);
             main_graph.getData().add(eu.getSeries());
+            ta_error_graph.getData().add(eu.getTAError());
             error_graph.getData().add(eu.getError());
         }
 
         if (i_eu_ch.isSelected()) {
-            ImprovedEuler ieu = new ImprovedEuler(x0, y0, ex_step, limit);
+            ImprovedEuler ieu = new ImprovedEuler(x0, y0, steps, limit, tas, taf);
             main_graph.getData().add(ieu.getSeries());
+            ta_error_graph.getData().add(ieu.getTAError());
             error_graph.getData().add(ieu.getError());
         }
 
         if (rk_ch.isSelected()) {
-            RungeKutta rk = new RungeKutta(x0, y0, ex_step, limit);
+            RungeKutta rk = new RungeKutta(x0, y0, steps, limit, tas, taf);
             main_graph.getData().add(rk.getSeries());
+            ta_error_graph.getData().add(rk.getTAError());
             error_graph.getData().add(rk.getError());
+        }
+
+        if (ex_ch.isSelected()) {
+            Exact ex = new Exact(x0, y0, steps, limit);
+            main_graph.getData().add(ex.getSeries());
         }
 
         if (!eu_ch.isSelected() && !rk_ch.isSelected() && !ex_ch.isSelected() && !i_eu_ch.isSelected()) {
