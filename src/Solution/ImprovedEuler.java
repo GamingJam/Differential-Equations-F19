@@ -7,20 +7,17 @@ import java.math.MathContext;
 import java.text.DecimalFormat;
 
 public class ImprovedEuler {
-    private double lim, step, x0, y0, c;
-    private double maxError;
+    private double lim, step, x0, y0, c, maxError;
     private int tas, taf;
     private XYChart.Series<Number, Number> seriesE;
     private XYChart.Series<Number, Number> seriesEE;
     private XYChart.Series<Number, Number> seriesEAE;
-    private int steps;
 
     ImprovedEuler(double x0, double y0, int steps, double lim, int tas, int taf) {
         this.x0 = x0;
         this.y0 = y0;
         this.lim = lim;
         this.step = (lim - x0) / steps;
-        this.steps = steps;
         this.c = (1 / (-1 * Math.exp(x0) + y0) + x0);
         seriesE = new XYChart.Series<Number, Number>();
         seriesE.setName("Improved Euler");
@@ -59,7 +56,6 @@ public class ImprovedEuler {
             x += step;
             tae = Math.abs(calculation(x) - y);
             seriesEE.getData().add(new XYChart.Data<Number, Number>(x, tae));
-
             if (tae > maxError) maxError = tae;
         }
         return seriesEE;

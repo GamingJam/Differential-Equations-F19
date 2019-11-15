@@ -35,7 +35,6 @@ public class Euler {
         seriesE.getData().clear();
         seriesE.getData().add(new XYChart.Data<Number, Number>(x0, y0));
         double x = x0, y = y0, y1;
-
         while (x + step <= lim) {
             y1 = y + step * getDEValue(x, y);
             y = y1;
@@ -46,28 +45,18 @@ public class Euler {
     }
 
     XYChart.Series<Number, Number> getError() {
-
         seriesEE.getData().clear();
-        double x = x0;
-        double y = y0;
-        double y1;
-        double tae;
+        double x = x0, tae, y1, y = y0;
         seriesEE.getData().add(new XYChart.Data<Number, Number>(x, 0));
-
         while (x + step <= lim) {
             y1 = y + step * getDEValue(x, y);
             y = y1;
             x += step;
-
             tae = Math.abs(calculation(x) - y);
-
             seriesEE.getData().add(new XYChart.Data<Number, Number>(x, tae));
-
             if (tae > maxError) {
                 maxError = tae;
             }
-
-
         }
         return seriesEE;
     }

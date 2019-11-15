@@ -8,8 +8,7 @@ import java.text.DecimalFormat;
 
 public class RungeKutta {
 
-    private double lim, step, x0, y0, c;
-    private double maxError;
+    private double lim, step, x0, y0, c, maxError;
     private int tas, taf;
     private XYChart.Series<Number, Number> seriesE;
     private XYChart.Series<Number, Number> seriesEE;
@@ -54,7 +53,6 @@ public class RungeKutta {
         seriesEE.getData().add(new XYChart.Data<Number, Number>(x0, y0));
         System.out.println(x0 + " " + y0);
         double x = x0, y = y0, k1, k2, k3, k4, y1, tae;
-
         while (x + step <= lim) {
 
             k1 = GetDEValue(x,y);
@@ -64,12 +62,10 @@ public class RungeKutta {
             y1 = y + (step / 6) * (k1 + 2 * k2 + 2 * k3 + k4);
             y = y1;
             x += step;
-
             tae = Math.abs(calculation(x) - y);
             if (tae > maxError){
                 maxError = tae;
             }
-
             seriesEE.getData().add(new XYChart.Data<Number, Number>(x, tae));
 
         }
